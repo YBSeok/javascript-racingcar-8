@@ -1,10 +1,12 @@
-// RacingGame 클래스 정의
 import { Console } from "@woowacourse/mission-utils";
-
+import Car from "./RacingGameHeader.js";
 class RacingGame {
+  #cars;
+  #tryCount;
+
   constructor(carNames, tryCount) {
-    this.carNames = carNames;
-    this.tryCount = tryCount;
+    this.#cars = carNames.map((name) => new Car(name));
+    this.#tryCount = tryCount;
   }
 
   async getCarNamesInput() {
