@@ -1,7 +1,7 @@
 class ErrorHandler {
   static validateCarNames(carNames) {
-    if (carNames.length === 0 || isNaN(carNames)) {
-      throw new Error("[ERROR] 최소 2대 이상의 자동차 이름을 입력해주세요.");
+    if (carNames.length === 0) {
+      throw new Error("[ERROR] 최소 1대 이상의 자동차 이름을 입력해주세요.");
     }
 
     if (carNames.some((name) => name.length === 0)) {
