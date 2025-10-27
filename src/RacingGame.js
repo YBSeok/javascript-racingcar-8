@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import Car from "./RacingGameHeader.js";
+
 class RacingGame {
   #cars;
   #tryCount;

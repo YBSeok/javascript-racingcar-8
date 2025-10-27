@@ -1,5 +1,7 @@
 import RacingGame from "./RacingGame.js";
 import { Console } from "@woowacourse/mission-utils";
+import ErrorHandler from "./ErrorHandler.js";
+
 class App {
   async run() {
     const carNames = await this.getCarNamesInput();
@@ -16,12 +18,14 @@ class App {
     );
 
     const carNames = input.split(",").map((name) => name.trim());
+    ErrorHandler.validateCarNames(carNames);
     return carNames;
   }
 
   async getTryCountInput() {
     const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const tryCount = parseInt(input);
+    ErrorHandler.validateTryCount(tryCount);
     return tryCount;
   }
 }
