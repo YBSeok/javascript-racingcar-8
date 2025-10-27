@@ -1,6 +1,6 @@
 class ErrorHandler {
   static validateCarNames(carNames) {
-    if (carNames.length === 0) {
+    if (carNames.length === 1 && carNames[0] === "") {
       throw new Error("[ERROR] 최소 1대 이상의 자동차 이름을 입력해주세요.");
     }
 
@@ -13,10 +13,16 @@ class ErrorHandler {
     }
   }
 
-  static validateTryCount(tryCount) {
-    if (!Number.isInteger(tryCount) || isNaN(tryCount) || tryCount < 1) {
+  static validateTryCount(input) {
+    if (input.trim() === "") {
+      throw new Error("[ERROR] 시도할 횟수를 입력해야 합니다.");
+    }
+    const number = Number(input);
+
+    if (isNaN(number) || !Number.isInteger(number) || number < 1) {
       throw new Error("[ERROR] 시도할 횟수는 1 이상의 정수여야 합니다.");
     }
+    return number;
   }
 }
 

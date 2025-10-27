@@ -24,8 +24,11 @@ class App {
 
   async getTryCountInput() {
     const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-    const tryCount = parseInt(input);
-    ErrorHandler.validateTryCount(tryCount);
+
+    // 1. parseInt(input) 대신 원본 'input' (문자열)을 검사하도록 변경
+    // 2. ErrorHandler가 검증된 '숫자'를 반환하도록 함
+    const tryCount = ErrorHandler.validateTryCount(input);
+
     return tryCount;
   }
 }
