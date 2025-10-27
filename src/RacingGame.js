@@ -24,6 +24,28 @@ class RacingGame {
     return tryCount;
   }
 
+  runRace() {
+    Console.print("\n실행 결과");
+
+    for (let i = 0; i < this.#tryCount; i++) {
+      this.runRaceRound();
+      this.showCurrentPosition();
+      Console.print("");
+    }
+  }
+
+  runRaceRound() {
+    for (const car of this.#cars) {
+      car.tryMove();
+    }
+  }
+
+  showCurrentPosition() {
+    for (const car of this.#cars) {
+      Console.print(car.getCurrentPosition());
+    }
+  }
+
   async showResult() {
     console.log("실행 결과\n");
   }

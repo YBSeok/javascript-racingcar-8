@@ -16,6 +16,10 @@ class Car {
     }
   }
 
+  getCurrentPosition() {
+    return `${this.#name} : ${"-".repeat(this.#position)}`;
+  }
+
   getPosition() {
     return this.#position;
   }
