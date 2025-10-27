@@ -46,12 +46,32 @@ class RacingGame {
     }
   }
 
-  async showResult() {
-    console.log("실행 결과\n");
+  showWinners() {
+    const winnerNames = this.findWinners();
+    Console.print(`최종 우승자 : ${winnerNames.join(", ")}`);
   }
 
-  async showWinners() {
-    console.log("최종 우승자 : ${this.carNames}");
+  findWinners() {
+    const maxPosition = this.findMaxPosition();
+
+    const winners = [];
+    for (const car of this.#cars) {
+      if (car.getPosition() === maxPosition) {
+        winners.push(car.getName());
+      }
+    }
+    return winners;
+  }
+
+  findMaxPosition() {
+    let maxPosition = 0;
+    for (const car of this.#cars) {
+      const position = car.getPosition();
+      if (position > maxPosition) {
+        maxPosition = position;
+      }
+    }
+    return maxPosition;
   }
 }
 
